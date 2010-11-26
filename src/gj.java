@@ -5,7 +5,8 @@ public class gj extends dx {
     private int e;
     public int b = 0;
     public int c;
-    private int f = 5;
+    // hMod: This is set to private/5 by the server, it needs to be public/0
+    public int f = 0;
 
     public float d = (float) (Math.random() * 3.141592653589793D * 2.0D);
 
@@ -188,7 +189,9 @@ public class gj extends dx {
         int i = this.a.a;
         if ((this.c == 0) && (paramfx.al.a(this.a))) {
             // hMod: allow item pickups
+
             Item item = new Item(a.c, a.a);
+            item.setDamage(f);
             if (!(Boolean) etc.getLoader().callHook(PluginLoader.Hook.ITEM_PICK_UP, new Object[]{paramfx, item})) {
                 this.l.a(this, "random.pop", 0.2F, ((this.W.nextFloat() - this.W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 paramfx.c(this, i);

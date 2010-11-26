@@ -395,9 +395,17 @@ public class jg extends fa implements ew {
         double d1 = paraml.b / 32.0D;
         double d2 = paraml.c / 32.0D;
         double d3 = paraml.d / 32.0D;
-        // hMod: allow item drops
-        if (!(Boolean) etc.getLoader().callHook(PluginLoader.Hook.ITEM_DROP, new Object[]{e, new Item(paraml.h, paraml.i)})) {
-            gj localgj = new gj(this.d.e, d1, d2, d3, new hl(paraml.h, paraml.i));
+        // hMod: allow item drops - we don't have any way to know which item dropped so we have to guess
+        Item item = e.getPlayer().getInventory().getItemFromId(paraml.h, paraml.i);
+        if ((item == null) || (item.getAmount() > paraml.i)) item = e.getPlayer().getEquipment().getItemFromId(paraml.h, paraml.i);
+        if ((item == null) || (item.getAmount() > paraml.i)) item = e.getPlayer().getCraftingTable().getItemFromId(paraml.h, paraml.i);
+        if (item == null) {
+            item = new Item(paraml.h, paraml.i);
+            item.setDamage(paraml.damage);
+        }
+
+        if (!(Boolean) etc.getLoader().callHook(PluginLoader.Hook.ITEM_DROP, new Object[]{e, item})) {
+            gj localgj = new gj(this.d.e, d1, d2, d3, new hl(paraml.h, paraml.i, item.getDamage()));
             localgj.s = (paraml.e / 128.0D);
             localgj.t = (paraml.f / 128.0D);
             localgj.u = (paraml.g / 128.0D);

@@ -46,7 +46,7 @@ public abstract class ItemArray {
     public Item getItemFromSlot(int slot) {
         if (slot < getArray().length && slot >= 0) {
             if (getArray()[slot] != null) {
-                return new Item(getArray()[slot].c, getArray()[slot].a, slot);
+                return new Item(getArray()[slot].c, getArray()[slot].a, slot, getArray()[slot].d);
             }
         }
         return null;
@@ -64,7 +64,7 @@ public abstract class ItemArray {
                 continue;
             }
             if (getArray()[i].c == id) {
-                return new Item(getArray()[i].c, getArray()[i].a, i);
+                return new Item(getArray()[i].c, getArray()[i].a, i, getArray()[i].d);
             }
         }
         return null;
@@ -83,7 +83,7 @@ public abstract class ItemArray {
                 continue;
             }
             if (getArray()[i].c == id && getArray()[i].a <= maxAmount) {
-                return new Item(getArray()[i].c, getArray()[i].a, i);
+                return new Item(getArray()[i].c, getArray()[i].a, i, getArray()[i].d);
             }
         }
         return null;
@@ -117,8 +117,9 @@ public abstract class ItemArray {
     }
 
     public void setSlot(Item item, int slot) {
-        setSlot(item.getItemId(), item.getAmount(), slot);
+        setSlot(item.getItemId(), item.getAmount(), slot, item.getDamage());
     }
+
     /**
      * Replaces the slot with the item inputted.
      *
@@ -130,8 +131,24 @@ public abstract class ItemArray {
      *          the id of the slot.
      */
     public void setSlot(int itemId, int amount, int slot) {
+       setSlot(itemId, amount, slot, 0);
+    }
+
+    /**
+     * Replaces the slot with the item inputted.
+     *
+     * @param itemId
+     *              item id of the item to put into the slot.
+     * @param amount
+     *              amount of the item to put into the slot.
+     * @param slot
+     *          the id of the slot.
+     * @param damage
+     *              damage of the item to put into the slot
+     */
+    public void setSlot(int itemId, int amount, int slot, int damage) {
         if (slot < getArray().length && slot >= 0) {
-            getArray()[slot] = new hl(itemId, (amount > 64 ? 64 : amount));
+            getArray()[slot] = new hl(itemId, (amount > 64 ? 64 : amount), damage);
         }
     }
     

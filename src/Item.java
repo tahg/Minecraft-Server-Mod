@@ -6,7 +6,7 @@
  */
 public class Item {
 
-    private int itemId = 1, amount = 1, slot = -1;
+    private int itemId = 1, amount = 1, slot = -1, damage = 0;
 
     /**
      * Create an item with an id of 1 and amount of 1
@@ -38,9 +38,25 @@ public class Item {
         this.slot = slot;
     }
 
+    /**
+     * Creates an item with specified id, amount and slot
+     * 
+     * @param itemId
+     * @param amount
+     * @param slot
+     * @param damage
+     */
+    public Item(int itemId, int amount, int slot, int damage) {
+        this.itemId = itemId;
+        this.amount = amount;
+        this.slot = slot;
+        this.damage = damage;
+    }
+
     public Item(hl hl) {
         itemId = hl.c;
         amount = hl.a;
+        damage = hl.d;
     }
 
     /**
@@ -108,5 +124,31 @@ public class Item {
      */
     public void setSlot(int slot) {
         this.slot = slot;
+    }
+
+    /**
+     * Returns this item's current damage. Values are 0-50.
+     *
+     * 0 is an indestructible item
+     * 1 is 100% health
+     * 50 is a destroyed item
+     *
+     * @return damage
+     */
+    public int getDamage() {
+        return damage;
+    }
+
+    /**
+     * Sets this item's current damage. Values are 0-50.
+     *
+     * 0 will mean this item cannot be damaged
+     * 1 will give this item 100% health
+     * 50 will give this item 0% health, destroyed
+     *
+     * @param damage
+     */
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }
