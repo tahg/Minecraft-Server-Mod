@@ -29,6 +29,10 @@ public class kj extends fr
         this.e = paramfi;
         paramfi.a = this;
     }
+    
+    public Player getPlayer() {
+        return e.getPlayer();
+    }
 
     public void a() {
         this.b.a();
@@ -68,7 +72,7 @@ public class kj extends fr
             to.rotX = getPlayer().getRotation();
             to.rotY = getPlayer().getPitch();
 
-            etc.getLoader().callHook(PluginLoader.Hook.PLAYER_MOVE, ((et)this.e).getPlayer(), from, to);
+            etc.getLoader().callHook(PluginLoader.Hook.PLAYER_MOVE, ((fi)this.e).getPlayer(), from, to);
         }
         if (this.j) {
             if (this.e.k != null) {
@@ -92,7 +96,7 @@ public class kj extends fr
                 this.e.A = paramhx.g;
 
                 // hMod: Make tmp copy of e.k as it sets k to null but has to run first :/
-                ea tmp = this.e.k;
+                ep tmp = this.e.k;
                 this.e.F();
                 this.e.c(d6, 0.0D, d7);
                 this.e.b(d3, d4, d5, f1, f2);
@@ -139,7 +143,7 @@ public class kj extends fr
                 d3 = paramhx.a;
                 d4 = paramhx.b;
                 d5 = paramhx.c;
-                d7 = paramhx.d - paramhx.b;
+                double d7 = paramhx.d - paramhx.b;
                 if ((d7 > 1.65D) || (d7 < 0.1D)) {
                     a("Illegal stance");
                     a.warning(this.e.aw + " had an illegal stance: " + d7);
@@ -325,31 +329,31 @@ public class kj extends fr
         Block blockClicked = null;
         Block blockPlaced = null;
 
-        if (paramgs.b == 255) {
+        if (paramgs.d == 255) {
             // ITEM_USE -- if we have a lastRightClicked then it could be a usable location
             blockClicked = lastRightClicked;
             lastRightClicked = null;
         } else {
             // RIGHTCLICK or BLOCK_PLACE .. or nothing
-            blockClicked = new Block(etc.getServer().getBlockIdAt(paramgb.b, paramgb.c, paramgb.d), paramgb.b, paramgb.c, paramgb.d);
-            blockClicked.setFaceClicked(Block.Face.fromId(paramgb.e));
+            blockClicked = new Block(etc.getServer().getBlockIdAt(paramgs.a, paramgs.b, paramgs.c), paramgs.a, paramgs.b, paramgs.c);
+            blockClicked.setFaceClicked(Block.Face.fromId(paramgs.e.a));
             lastRightClicked = blockClicked;
         }
 
         // If we clicked on something then we also have a location to place the block
         if (blockClicked != null) {
-            blockPlaced = new Block( paramgb.a, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
-            if (paramgb.e == 0) {
+            blockPlaced = new Block( paramgs.a, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
+            if (paramgs.d == 0) {
                 blockPlaced.setY(blockPlaced.getY() - 1);
-            } else if (paramgb.e == 1) {
+            } else if (paramgs.d == 1) {
                 blockPlaced.setY(blockPlaced.getY() + 1);
-            } else if (paramgb.e == 2) {
+            } else if (paramgs.d == 2) {
                 blockPlaced.setZ(blockPlaced.getZ() - 1);
-            } else if (paramgb.e == 3) {
+            } else if (paramgs.d == 3) {
                 blockPlaced.setZ(blockPlaced.getZ() + 1);
-            } else if (paramgb.e == 4) {
+            } else if (paramgs.d == 4) {
                 blockPlaced.setX(blockPlaced.getX() - 1);
-            } else if (paramgb.e == 5) {
+            } else if (paramgs.d == 5) {
                 blockPlaced.setX(blockPlaced.getX() + 1);
             }
         }
@@ -372,14 +376,14 @@ public class kj extends fr
                 i4 = i3;
             }
             // hMod: call BLOCK_RIGHTCLICKED
-            Player player = ((et)this.e).getPlayer();
-            etc.getLoader().callHook(PluginLoader.Hook.BLOCK_RIGHTCLICKED, player, blockClicked, new Item(new hn(paramgb.a)));
+            Player player = ((fi)this.e).getPlayer();
+            etc.getLoader().callHook(PluginLoader.Hook.BLOCK_RIGHTCLICKED, player, blockClicked, new Item(new ik(paramgs.a)));
 
             // hMod: call original BLOCK_CREATED
-            etc.getLoader().callHook(PluginLoader.Hook.BLOCK_CREATED, player, blockPlaced, blockClicked, paramgb.a);
+            etc.getLoader().callHook(PluginLoader.Hook.BLOCK_CREATED, player, blockPlaced, blockClicked, paramgs.a);
 
             // hMod: If we were building inside spawn, bail! (unless ops/admin)
-            if (((i4 > etc.getInstance().getSpawnProtectionSize() && !etc.getInstance().isOnItemBlacklist(paramgb.a)) || bool) && player.canBuild()) {
+            if (((i4 > etc.getInstance().getSpawnProtectionSize() && !etc.getInstance().isOnItemBlacklist(paramgs.a)) || bool) && player.canBuild()) {
                 this.e.c.a(this.e, this.d.e, localik, m, n, i1, i2);
             } else {
                 // hMod: No point sending the client to update the blocks, you weren't allowed to place!
@@ -430,7 +434,7 @@ public class kj extends fr
 
     public void a(String paramString, Object[] paramArrayOfObject) {
         // hMod: disconnect!
-        etc.getLoader().callHook(PluginLoader.Hook.DISCONNECT, ((et)e).getPlayer());
+        etc.getLoader().callHook(PluginLoader.Hook.DISCONNECT, ((fi)e).getPlayer());
         a.info(this.e.aw + " lost connection: " + paramString);
         this.d.f.a(new br("§e" + this.e.aw + " left the game."));
         this.d.f.c(this.e);
@@ -482,7 +486,7 @@ public class kj extends fr
         } else if (paramString.toLowerCase().startsWith("/kill")) {
             this.e.a(null, 1000);
         } else {
-            Object localObject;
+            String[] localObject;
             if (paramString.toLowerCase().startsWith("/tell ")) {
                 localObject = paramString.split(" ");
                 if (localObject.length >= 3) {
@@ -496,12 +500,12 @@ public class kj extends fr
                     }
                 }
             } else if (this.d.f.g(this.e.aw)) {
-                localObject = paramString.substring(1);
-                a.info(this.e.aw + " issued server command: " + (String) localObject);
-                this.d.a((String) localObject, this);
+                String localObject2 = paramString.substring(1);
+                a.info(this.e.aw + " issued server command: " + (String) localObject2);
+                this.d.a((String) localObject2, this);
             } else {
-                localObject = paramString.substring(1);
-                a.info(this.e.aw + " tried command: " + (String) localObject);
+                String localObject2 = paramString.substring(1);
+                a.info(this.e.aw + " tried command: " + (String) localObject2);
             }
         }
     }
@@ -509,7 +513,7 @@ public class kj extends fr
     public void a(v paramv) {
         if (paramv.b == 1) {
             // hMod: Swing teh arm!
-            etc.getLoader().callHook(PluginLoader.Hook.ARM_SWING, ((et)e).getPlayer());
+            etc.getLoader().callHook(PluginLoader.Hook.ARM_SWING, ((fi)e).getPlayer());
             this.e.H();
         } else if (paramv.b == 104) {
             this.e.al = true;
@@ -610,7 +614,7 @@ public class kj extends fr
                 }
             }
             if ((localbg instanceof ko)) {
-                m = paramgm.a;
+                int m = paramgm.a;
                 n = paramgm.b;
                 i1 = paramgm.c;
                 ko localko = (ko) localbg;
