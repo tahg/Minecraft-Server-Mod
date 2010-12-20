@@ -7,20 +7,20 @@ public class Mob extends LivingEntity {
     /**
      * Creates a mob interface
      * 
-     * @param localka name of mob
+     * @param locallb name of mob
      */
-    public Mob(ka localka) {
-        super(localka);
+    public Mob(lb locallb) {
+        super(locallb);
     }
     
     /**
-     * Creates a mob interface
+     * Creates a mob interface 
      * 
      * @param mob
      *            name of mob
      */
     public Mob(String mob) {
-        this((ka) hp.a(mob, etc.getMCServer().e));
+        this((lb) hp.a(mob, etc.getMCServer().e));
     }
 
     /**
@@ -53,7 +53,7 @@ public class Mob extends LivingEntity {
         localeq.a(entity);
 
         if (rider != null) {
-            ka mob2 = rider.getMob();
+            lb mob2 = rider.getMob();
             mob2.c(getX(), getY(), getZ(), getRotation(), 0f);
             localeq.a(mob2);
             mob2.e(entity);
@@ -88,7 +88,7 @@ public class Mob extends LivingEntity {
      * 
      * @return
      */
-    public ka getMob() {
+    public lb getMob() {
         return getEntity();
     }
 
@@ -103,6 +103,6 @@ public class Mob extends LivingEntity {
         if (mob == null) {
             return false;
         }
-        return hp.a(mob, etc.getMCServer().e) instanceof ka;
+        return hp.a(mob, etc.getMCServer().e) instanceof lb;
     }
 }
