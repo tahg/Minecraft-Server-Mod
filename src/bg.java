@@ -75,7 +75,7 @@ public class bg {
             }
             if (block != null) {
                 if (!(Boolean) etc.getLoader().callHook(PluginLoader.Hook.COMPLEX_BLOCK_SEND, player, block) && player.canBuild()) {
-                    player.getUser().a.b.a(new gm(this.b, this.c, this.d, this));
+                    this.a.b(this.b, this.c, this.d, this);
                 } else {
                     bg toSend = null;
                     if (localbg instanceof ja) {
@@ -90,10 +90,10 @@ public class bg {
                     toSend.b = b;
                     toSend.c = c;
                     toSend.d = d;
-                    player.getUser().a.b.a(new gm(this.b, this.c, this.d, toSend));
+                    this.a.b(this.b, this.c, this.d, toSend);
                 }
             } else {
-                player.getUser().a.b.a(new gm(this.b, this.c, this.d, this));
+                this.a.b(this.b, this.c, this.d, this);
             }
         }
     }
