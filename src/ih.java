@@ -189,13 +189,12 @@ public class ih
         for (int i = 0; i < parames.b(); i++) {
             ad localad = (ad) parames.a(i);
             int j = localad.b("Slot") & 0xFF;
-            if ((j >= 0) && (j < this.a.length)) {
-                this.a[j] = new ik(localad);
+            ik localik = new ik(localad);
+            if (localik.a() != null) {
+                if ((j >= 0) && (j < this.a.length)) this.a[j] = localik;
+                if ((j < 100) || (j >= this.b.length + 100)) continue;
+                this.b[(j - 100)] = localik;
             }
-            if ((j < 100) || (j >= this.b.length + 100)) {
-                continue;
-            }
-            this.b[(j - 100)] = new ik(localad);
         }
     }
 
