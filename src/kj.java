@@ -48,6 +48,15 @@ public class kj extends fr
         return e.getPlayer();
     }
 
+    /**
+     * Sends a message to the player
+     *
+     * @param msg
+     */
+    public void msg(String msg) {
+        b(new br(msg));
+    }
+
     public void a() {
         this.b.a();
         if (this.f++ % 20 == 0) {

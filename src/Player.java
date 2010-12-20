@@ -57,7 +57,7 @@ public class Player extends HumanEntity implements MessageReceiver {
      * @param reason
      */
     public void kick(String reason) {
-        getEntity().a.c(reason);
+        getEntity().a.a(reason);
     }
     
     /**
