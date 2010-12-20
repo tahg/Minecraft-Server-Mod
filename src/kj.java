@@ -20,7 +20,7 @@ public class kj extends fr
     private double h;
     private double i;
     private boolean j = true;
-    private Map k = new HashMap();
+    private Map<Integer,Short> k = new HashMap<Integer,Short>();
 
     public kj(MinecraftServer paramMinecraftServer, bs parambs, fi paramfi) {
         this.d = paramMinecraftServer;
@@ -29,6 +29,20 @@ public class kj extends fr
         this.e = paramfi;
         paramfi.a = this;
     }
+
+    /**
+     * Returns the item in player's hand
+     * 
+     * @return
+     */
+    public int getItemInHand() {
+        // TODO: actually get the item in hand...
+        /*if (k != null) { // Check to see if we are even holding anything
+            return k.c;
+        }*/
+        return -1;
+    }
+
     
     public Player getPlayer() {
         return e.getPlayer();
@@ -336,13 +350,13 @@ public class kj extends fr
         } else {
             // RIGHTCLICK or BLOCK_PLACE .. or nothing
             blockClicked = new Block(etc.getServer().getBlockIdAt(paramgs.a, paramgs.b, paramgs.c), paramgs.a, paramgs.b, paramgs.c);
-            blockClicked.setFaceClicked(Block.Face.fromId(paramgs.e.a));
+            blockClicked.setFaceClicked(Block.Face.fromId(paramgs.e.d));
             lastRightClicked = blockClicked;
         }
 
         // If we clicked on something then we also have a location to place the block
         if (blockClicked != null) {
-            blockPlaced = new Block( paramgs.a, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
+            blockPlaced = new Block( paramgs.e.c, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
             if (paramgs.d == 0) {
                 blockPlaced.setY(blockPlaced.getY() - 1);
             } else if (paramgs.d == 1) {
@@ -455,27 +469,9 @@ public class kj extends fr
     }
 
     public void a(br parambr) {
-        // hMod: redirect chathandling to player class // TODO : <--, also, where the hell is the drop method?!
+        // hMod: redirect chathandling to player class
         String str = parambr.a;
-        if (str.length() > 100) {
-            a("Chat message too long");
-            return;
-        }
-        str = str.trim();
-        for (int m = 0; m < str.length(); m++) {
-            if (" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_'abcdefghijklmnopqrstuvwxyz{|}~âŒ‚Ã‡Ã¼Ã©Ã¢Ã¤Ã Ã¥Ã§ÃªÃ«Ã¨Ã¯Ã®Ã¬Ã„Ã…Ã‰Ã¦Ã†Ã´Ã¶Ã²Ã»Ã¹Ã¿Ã–ÃœÃ¸Â£Ã˜Ã—Æ’Ã¡Ã­Ã³ÃºÃ±Ã‘ÂªÂºÂ¿Â®Â¬Â½Â¼Â¡Â«Â»".indexOf(str.charAt(m)) < 0) {
-                a("Illegal characters in chat");
-                return;
-            }
-        }
-
-        if (str.startsWith("/")) {
-            c(str);
-        } else {
-            str = "<" + this.e.aw + "> " + str;
-            a.info(str);
-            this.d.f.a(new br(str));
-        }
+        getPlayer().chat(str);
     }
 
     private void c(String paramString) {
@@ -577,7 +573,7 @@ public class kj extends fr
                 this.e.a.b(new ay(paramcs.a, paramcs.d, false));
                 this.e.ap.a(this.e, false);
 
-                ArrayList localArrayList = new ArrayList();
+                ArrayList<ik> localArrayList = new ArrayList<ik>();
                 for (int m = 0; m < this.e.ap.e.size(); m++) {
                     localArrayList.add(((go) this.e.ap.e.get(m)).c());
                 }

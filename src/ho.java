@@ -9,7 +9,7 @@ import net.minecraft.server.MinecraftServer;
 
 public class ho {
 
-    private Set a = new HashSet();
+    private Set<hq> a = new HashSet<hq>();
     private je b = new je();
     private MinecraftServer c;
     private int d;
@@ -74,7 +74,7 @@ public class ho {
 
     public void b(ep paramep) {
         if ((paramep instanceof fi)) {
-            localObject = (fi) paramep;
+            fi localObject = (fi) paramep;
             for (hq localhq : this.a) {
                 localhq.a((fi) localObject);
             }
@@ -89,7 +89,7 @@ public class ho {
     public void a() {
         ArrayList localArrayList = new ArrayList();
         for (Iterator localIterator1 = this.a.iterator(); localIterator1.hasNext();) {
-            localObject = (hq) localIterator1.next();
+            hq localObject = (hq) localIterator1.next();
             ((hq) localObject).a(this.c.e.d);
             if ((((hq) localObject).p) && ((((hq) localObject).a instanceof fi))) {
                 localArrayList.add((fi) ((hq) localObject).a);
