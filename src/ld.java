@@ -43,7 +43,7 @@ public class ld extends gl {
             // hMod: Reed placement
             Block blockPlaced = new Block(paramff.a(paramInt1, paramInt2, paramInt3), paramInt1, paramInt2, paramInt3);
             blockClicked.setFaceClicked(Block.Face.fromId(paramInt4));
-            Player player = ((et) paramgp).getPlayer(); // HMOD: TODO FIXME
+            Player player = ((fi) paramgp).getPlayer();
 
             // hMod Store all the old settings 'externally' in case someone changes blockPlaced.
             int oldMaterial = paramff.a(paramInt1, paramInt2, paramInt3);

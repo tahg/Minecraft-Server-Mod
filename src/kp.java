@@ -146,7 +146,7 @@ public class kp extends ep
                 double d2 = this.q + (this.ap - this.q) / this.an;
                 double d4 = this.r + (this.aq - this.r) / this.an;
 
-                d5 = this.ar - this.v;
+                double d5 = this.ar - this.v;
                 while (d5 < -180.0D) {
                     d5 += 360.0D;
                 }
@@ -237,8 +237,8 @@ public class kp extends ep
                 this.r = (k + 0.5D);
                 d14 = this.p - i;
             } else {
-                d19 = this.p - d15;
-                d20 = this.r - d16;
+                double d19 = this.p - d15;
+                double d20 = this.r - d16;
 
                 d21 = (d19 * d8 + d20 * d10) * 2.0D;
                 d14 = d21;
@@ -605,7 +605,7 @@ public class kp extends ep
     public ik a(int paramInt1, int paramInt2) {
         if (this.ak[paramInt1] != null) {
             if (this.ak[paramInt1].a <= paramInt2) {
-                localik = this.ak[paramInt1];
+                ik localik = this.ak[paramInt1];
                 this.ak[paramInt1] = null;
                 return localik;
             }
