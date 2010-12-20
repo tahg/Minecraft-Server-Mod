@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 
 public class kp extends ep
-        implements lf {
+        implements lf, Container<ik> {
 
     // hMod: need to be public!
     public ik[] ak = new ik[36];
@@ -22,6 +22,16 @@ public class kp extends ep
     private double aq;
     private double ar;
     private double as;
+
+    @Override
+    public ik[] getContents() {
+        return ak;
+    }
+
+    @Override
+    public void setContents(ik[] values) {
+        ak = values;
+    }
 
     public kp(ff paramff) {
         super(paramff);

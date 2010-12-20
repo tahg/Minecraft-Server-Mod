@@ -318,8 +318,8 @@ public class Item {
      * @return
      */
     public static boolean isValidItem(int itemId) {
-        if (itemId < fl.c.length) {
-            return fl.c[itemId] != null;
+        if (itemId < ga.c.length) {
+            return ga.c[itemId] != null;
         }
         return false;
     }

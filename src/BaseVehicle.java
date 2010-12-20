@@ -103,8 +103,8 @@ public class BaseVehicle extends BaseEntity {
      */
     public Player getPassenger() {
         if (entity.j != null)
-            if (entity.j instanceof et)
-                return ((et)entity.j).getPlayer();
+            if (entity.j instanceof fi)
+                return ((fi)entity.j).getPlayer();
         return null;
     }
 }

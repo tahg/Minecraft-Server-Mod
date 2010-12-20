@@ -22,7 +22,7 @@ public class Inventory extends ItemArray<hk> {
          */
         Equipment
     }
-    private et user;
+    private fi user;
     private Inventory.Type type = Inventory.Type.Inventory;
 
     /**
