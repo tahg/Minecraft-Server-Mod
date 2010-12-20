@@ -378,7 +378,7 @@ public class kj extends fr
                 // Set the type of block to what it currently is
                 blockPlaced.setType(etc.getServer().getBlockIdAt(blockPlaced.getX(), blockPlaced.getY(), blockPlaced.getZ()));
             }
-            this.e.c.a(this.e, this.d.e, localik); // HMOD : TODO - CHANGE TO DIGGING
+            ((Digging)this.e.c).a(this.e, this.d.e, localik);
         } else {
             int m = paramgs.a;
             int n = paramgs.b;

@@ -144,7 +144,7 @@ public class cw {
                 int i8 = localip.c;
                 int i9 = this.i.a(i6, i7, i8);
                 int i10 = this.i.a(i6, i7 - 1, i8);
-                if ((i9 == 0) && (gu.o[i10] != 0) && (this.h.nextInt(3) == 0)) {
+                if ((i9 == 0) && (gu.o[i10]) && (this.h.nextInt(3) == 0)) {
                     this.i.d(i6, i7, i8, gu.ar.bh);
                 }
             }

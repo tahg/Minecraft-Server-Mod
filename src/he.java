@@ -88,13 +88,13 @@ public class he extends ep {
         double d2 = paramDouble2 - j;
         double d3 = paramDouble3 - k;
 
-        if (gu.o[this.l.a(i, j, k)] != 0) {
-            int m = gu.o[this.l.a(i - 1, j, k)] == 0 ? 1 : 0;
-            int n = gu.o[this.l.a(i + 1, j, k)] == 0 ? 1 : 0;
-            int i1 = gu.o[this.l.a(i, j - 1, k)] == 0 ? 1 : 0;
-            int i2 = gu.o[this.l.a(i, j + 1, k)] == 0 ? 1 : 0;
-            int i3 = gu.o[this.l.a(i, j, k - 1)] == 0 ? 1 : 0;
-            int i4 = gu.o[this.l.a(i, j, k + 1)] == 0 ? 1 : 0;
+        if (gu.o[this.l.a(i, j, k)]) {
+            int m = !gu.o[this.l.a(i - 1, j, k)] ? 1 : 0;
+            int n = !gu.o[this.l.a(i + 1, j, k)] ? 1 : 0;
+            int i1 = !gu.o[this.l.a(i, j - 1, k)] ? 1 : 0;
+            int i2 = !gu.o[this.l.a(i, j + 1, k)] ? 1 : 0;
+            int i3 = !gu.o[this.l.a(i, j, k - 1)] ? 1 : 0;
+            int i4 = !gu.o[this.l.a(i, j, k + 1)] ? 1 : 0;
 
             int i5 = -1;
             double d4 = 9999.0D;

@@ -46,8 +46,8 @@ public class fi extends gp
         paramkv.a = this;
         this.aw = paramString;
 
-        // hMod: So we don't conflict with runecraft // TODO
-        this.c = paramkv;
+        // hMod: So we don't conflict with runecraft
+        this.c = new Digging(paramff, this);
 
         this.H = 0.0F;
 
@@ -142,10 +142,10 @@ public class fi extends gp
     public void F() {
         super.b_();
 
-        Object localObject1 = null;
+        lj localObject1 = null;
 
         double d1 = 0.0D;
-        Object localObject2;
+        lj localObject2;
         for (int i = 0; i < this.f.size(); i++) {
             localObject2 = (lj) this.f.get(i);
             double d2 = ((lj) localObject2).a(this);
@@ -156,7 +156,7 @@ public class fi extends gp
         }
 
         if (localObject1 != null) {
-            i = 0;
+            int i = 0;
 
             if (d1 < 1024.0D) {
                 i = 1;
@@ -168,9 +168,9 @@ public class fi extends gp
             if (i != 0) {
                 this.f.remove(localObject1);
                 this.a.b(new ed(localObject1.a * 16, 0, localObject1.b * 16, 16, 128, 16, this.b.e));
-                localObject2 = this.b.e.d(localObject1.a * 16, 0, localObject1.b * 16, localObject1.a * 16 + 16, 128, localObject1.b * 16 + 16);
-                for (int j = 0; j < ((List) localObject2).size(); j++) {
-                    a((bg) ((List) localObject2).get(j)); // TODO : Complex block stuff. Move to a(bg)?
+                List list = this.b.e.d(localObject1.a * 16, 0, localObject1.b * 16, localObject1.a * 16 + 16, 128, localObject1.b * 16 + 16);
+                for (int j = 0; j < list.size(); j++) {
+                    a((bg) list.get(j)); // TODO : Complex block stuff. Move to a(bg)?
                 }
             }
         }
