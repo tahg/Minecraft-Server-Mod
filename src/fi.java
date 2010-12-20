@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class fi extends gp
     }
 
     public void k() {
-        this.ap.a(this);
+        this.ap.a((gp)this);
     }
 
     public int[] E() {
@@ -256,30 +257,32 @@ public class fi extends gp
     public void a(int paramInt1, int paramInt2, int paramInt3) {
         R();
         this.a.b(new ig(this.bH, 1, "Crafting", 9));
-        this.ap = new if
-         (this.an {
-            ,
+        // hMod: access class 'if' via refactoring...
+        Class<?> ifClass;
+        Class<?>[] args = new Class[] {ih.class, ff.class, Integer.TYPE, Integer.TYPE, Integer.TYPE};
+        Object[] actualArgs = new Object[] {this.an, this.l, paramInt1, paramInt2, paramInt3};
+        Constructor<?> ifCtor;
+        Object ifObj = null;
+        try {
+            ifClass = Class.forName("if");
+            ifCtor = ifClass.getConstructor(args);
+            ifObj = ifCtor.newInstance(actualArgs);           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        this.l,
-        paramInt1,
-        paramInt2,
-        paramInt3)
-          ;
-        this.ap.f
-
-
-
-
-          = this.bH;
-    this.ap.a(this);
-  }
+        this.ap = (dw)ifObj;
+        // hMod: end of reflection block
+        //this.ap = new if(this.an, this.l, paramInt1, paramInt2, paramInt3);
+        this.ap.f = this.bH;
+        this.ap.a((gp)this);
+      }
 
   public void a(lf paramlf) {
     R();
     this.a.b(new ig(this.bH, 0, paramlf.b(), paramlf.a()));
         this.ap = new bx(this.an, paramlf);
         this.ap.f = this.bH;
-        this.ap.a(this);
+        this.ap.a((gp)this);
     }
 
     public void a(ek paramek) {
@@ -287,7 +290,7 @@ public class fi extends gp
         this.a.b(new ig(this.bH, 2, paramek.b(), paramek.a()));
         this.ap = new bj(this.an, paramek);
         this.ap.f = this.bH;
-        this.ap.a(this);
+        this.ap.a((gp)this);
     }
 
     public void a(dw paramdw, int paramInt, ik paramik) {
@@ -327,7 +330,7 @@ public class fi extends gp
     }
 
     public void K() {
-        this.ap.a(this);
+        this.ap.a((gp)this);
         this.ap = this.ao;
     }
 }
