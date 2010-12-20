@@ -5,10 +5,10 @@
  */
 public class BaseVehicle extends BaseEntity {
     /**
-     * Creates an interface for a vehicle
+     * Creptes an interface for a vehicle
      * @param entity
      */
-    public BaseVehicle(ea entity) {
+    public BaseVehicle(ep entity) {
         this.entity = entity;
     }
 

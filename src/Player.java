@@ -39,8 +39,8 @@ public class Player extends HumanEntity implements MessageReceiver {
      * Returns the entity we're wrapping.
      * @return
      */
-    public et getEntity() {
-        return (et)entity;
+    public fi getEntity() {
+        return (fi)entity;
     }
     
     /**
@@ -823,7 +823,7 @@ public class Player extends HumanEntity implements MessageReceiver {
      * @param amount
      */
     public void giveItemDrop(int itemId, int amount) {
-        et player = getEntity();
+        fi player = getEntity();
         if (amount == -1) {
             player.a(new hn(itemId, 255));
         } else {
@@ -1254,7 +1254,7 @@ public class Player extends HumanEntity implements MessageReceiver {
      * 
      * @return
      */
-    public et getUser() {
+    public fi getUser() {
         return getEntity();
     }
 
@@ -1263,7 +1263,7 @@ public class Player extends HumanEntity implements MessageReceiver {
      * 
      * @param er
      */
-    public void setUser(et player) {
+    public void setUser(fi player) {
         this.entity = player;
         this.inventory = new Inventory(this, Inventory.Type.Inventory);
         this.craftingTable = new Inventory(this, Inventory.Type.CraftingTable);
@@ -1271,7 +1271,7 @@ public class Player extends HumanEntity implements MessageReceiver {
     }
 
     public void teleportTo(double x, double y, double z, float rotation, float pitch) {
-        et player = getEntity();
+        fi player = getEntity();
         
         // If player is in vehicle - eject them before they are teleported.
         if (player.k != null) {
