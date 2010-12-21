@@ -46,9 +46,11 @@ public class Digging extends kv {
      */
     public boolean a(gp player, ff world, ik item, Block blockToPlace, Block blockClicked) {
         // hMod: only call this hook if we're not using buckets/signs
-        if (item.a > 0 && item.c != Item.Type.Sign.getId() && item.c != Item.Type.Bucket.getId() && item.c != Item.Type.WaterBucket.getId() && item.c != Item.Type.LavaBucket.getId()) {
-            if (player instanceof fi && (Boolean) etc.getLoader().callHook(PluginLoader.Hook.ITEM_USE, ((fi) player).getPlayer(), blockToPlace, blockClicked, new Item(item))) {
-                return false;
+        if (item != null) {
+            if (item.a > 0 && item.c != Item.Type.Sign.getId() && item.c != Item.Type.Bucket.getId() && item.c != Item.Type.WaterBucket.getId() && item.c != Item.Type.LavaBucket.getId()) {
+                if (player instanceof fi && (Boolean) etc.getLoader().callHook(PluginLoader.Hook.ITEM_USE, ((fi) player).getPlayer(), blockToPlace, blockClicked, new Item(item))) {
+                    return false;
+                }
             }
         }
         return super.a(player, world, item);

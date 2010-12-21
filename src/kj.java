@@ -387,7 +387,7 @@ public class kj extends fr
                 // Set the type of block to what it currently is
                 blockPlaced.setType(etc.getServer().getBlockIdAt(blockPlaced.getX(), blockPlaced.getY(), blockPlaced.getZ()));
             }
-            ((Digging)this.e.c).a(this.e, this.d.e, localik);
+            ((Digging)this.e.c).a(this.e, this.d.e, localik, blockPlaced, blockClicked);
         } else {
             int m = paramgs.a;
             int n = paramgs.b;
