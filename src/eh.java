@@ -18,13 +18,10 @@ public class eh {
     private ArrayList h = new ArrayList();
     public MinecraftServer c;
 
-    // hMod: Something is calling this staticly ! >.<
-    // hMod: Is this needed anymore? Don't know the new signatures
-    /*
-    static ServerSocket a(ds self) { return self.d; }
-    static int b(ds self) { return self.f; }
-    static void a(ds self, fs newfs) { ++self.f; self.a(newfs); }
-     */
+    // hMod: These static methods are here because dx.java is calling them statically... >.>
+    static ServerSocket a(eh self) { return self.d; }
+    static int b(eh self) { return self.f; }
+    static void a(eh self, gh newgh) { ++self.f; self.a(newgh); }
 
     public eh(MinecraftServer paramMinecraftServer, InetAddress paramInetAddress, int paramInt) {
         this.c = paramMinecraftServer;
