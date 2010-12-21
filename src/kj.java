@@ -359,13 +359,13 @@ public class kj extends fr
         } else {
             // RIGHTCLICK or BLOCK_PLACE .. or nothing
             blockClicked = new Block(etc.getServer().getBlockIdAt(paramgs.a, paramgs.b, paramgs.c), paramgs.a, paramgs.b, paramgs.c);
-            blockClicked.setFaceClicked(Block.Face.fromId(paramgs.e.d));
+            blockClicked.setFaceClicked(Block.Face.fromId(paramgs.d));
             lastRightClicked = blockClicked;
         }
 
         // If we clicked on something then we also have a location to place the block
-        if (blockClicked != null) {
-            blockPlaced = new Block( paramgs.e.c, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
+        if (blockClicked != null && localik != null) {
+            blockPlaced = new Block( localik.c, blockClicked.getX(), blockClicked.getY(), blockClicked.getZ());
             if (paramgs.d == 0) {
                 blockPlaced.setY(blockPlaced.getY() - 1);
             } else if (paramgs.d == 1) {
